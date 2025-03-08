@@ -120,7 +120,6 @@ export const AuthProvider = ({ children }) => {
             setUser(user);
             setIsAuthenticated(true);
         } catch (error) {
-            console.log(error.response?.data.error);
             throw error.response?.data || { message: "Error al iniciar sesión" };
         }
     };

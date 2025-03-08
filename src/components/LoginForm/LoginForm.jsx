@@ -21,7 +21,12 @@ const LoginForm = ({ onSubmit }) => {
         if (!password.trim()) {
             setPasswordError("La contraseña es obligatoria");
             return;
-        } else {
+        } else if (password.length <= 8) {
+            console.log(password);
+
+            setPasswordError("Ingrese mínimo 8 caracteres");
+        }
+        else {
             setPasswordError("");
         }
 

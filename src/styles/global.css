@@ -7,6 +7,28 @@
 }
 
 
+:root {
+    /* ************************Login****************************** */
+
+    /* Bienvenida      => Hola, Bienvenido */
+    --bienvenida-color: hsl(0, 0%, 100%);
+    --bienvenida-font-weight: bold;
+    --bienvenida-font-size: 2.25rem;
+    --container-bienvenida-background-color: hsl(221, 66%, 50%);
+
+    /* text       => Iniciar sesion */
+    --inicio-sesion-color: hsl(0, 0%, 20%);
+    --container-inicio-sesion-background-color: hsl(0, 0%, 100%);
+    --boton-inciar-sesion-background-color: hsl(221, 66%, 50%);
+    --boton-iniciar-sesion-hover-background-color: #fff;
+
+    --primary-color: hsl(221, 66%, 50%);
+    --secondary-color: hsl(0, 0%, 90%);
+    --error-color: red;
+    --success-color: green;
+    --font-family: "Ubuntu", sans-serif;
+}
+
 
 
 /* Variables globales */
