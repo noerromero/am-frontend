@@ -99,7 +99,9 @@ export const AuthProvider = ({ children }) => {
     const login = async (email, password) => {
         try {
             const response = await axios.post(`${API_URL}/api/user/login`, { email, password });
+
             const { token, refreshToken, user } = response.data;
+
 
             Cookies.set("token", token, {
                 expires: 1,
@@ -118,6 +120,7 @@ export const AuthProvider = ({ children }) => {
             setUser(user);
             setIsAuthenticated(true);
         } catch (error) {
+            console.log(error.response?.data.error);
             throw error.response?.data || { message: "Error al iniciar sesión" };
         }
     };

@@ -1,7 +1,7 @@
 // src/router/AppRouter.jsx
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import Login from "../pages/Login";
+import Login from "../pages/Login/Login";
 import Home from "../pages/Home";
 
 const PrivateRoute = ({ children }) => {

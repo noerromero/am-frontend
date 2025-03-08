@@ -16,7 +16,7 @@ const LogoutButton = () => {
     };
 
     return (
-        <button onClick={handleLogout} style={{ marginTop: "20px", padding: "10px 20px", backgroundColor: "var(--primary-color)", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+        <button onClick={handleLogout}>
             Cerrar Sesión
         </button>
     );

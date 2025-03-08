@@ -1,12 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
-import LoginForm from "../components/LoginForm/LoginForm";
+import { useAuth } from "../../hooks/useAuth";
+import LoginForm from "../../components/LoginForm/LoginForm";
 import { toast } from "react-toastify";
+import './login.css'
 
 const Login = () => {
     const navigate = useNavigate();
     const { login } = useAuth();
+
+
 
     const handleLogin = async ({ email, password }) => {
         try {
@@ -15,17 +18,13 @@ const Login = () => {
                 onClose: () => navigate("/"),
             });
         } catch (error) {
-            // Mostrar el mensaje de error específico enviado por el servidor
-            const errorMessage = error?.response?.data?.error || "Error al iniciar sesión";
-            toast.error(errorMessage);
+            toast.error(error.error);
         }
     };
 
     return (
-        <section className="container">
-            <div className="form-box">
-                <LoginForm onSubmit={handleLogin} />
-            </div>
+        <section className="container_login">
+            <LoginForm onSubmit={handleLogin} />
         </section>
     );
 };

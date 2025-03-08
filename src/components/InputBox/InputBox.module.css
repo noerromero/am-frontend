@@ -1,24 +1,24 @@
-.input-box {
+.inputBox {
     position: relative;
     margin: 30px 0;
 }
 
-.input-box input {
+.inputBox input {
     width: 100%;
     border-radius: 0.5rem;
     padding: 0.813rem 2.5rem 0.813rem 0.813rem;
     border: none;
     outline: none;
     font-size: 1rem;
-    background-color: var(--secondary-color);
+    background-color: hsl(0, 0%, 90%);
 }
 
-.input-box input::placeholder {
+.inputBox input::placeholder {
     color: hsl(0, 0%, 30%);
-    font-family: var(--font-family);
+    font-family: "Ubuntu", sans-serif;
 }
 
-.icon {
+.inputBox i {
     position: absolute;
     right: 1.25rem;
     top: 50%;
@@ -27,8 +27,14 @@
     color: hsl(0, 0%, 30%);
 }
 
+.inputBox input.warning {
+    outline: 2px solid red;
+}
+
 .error {
-    color: var(--error-color);
+    color: red;
     font-size: 0.875rem;
     margin-top: 0.5rem;
+    font-weight: bold;
+    text-align: left;
 }

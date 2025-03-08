@@ -1,18 +1,17 @@
-
 import { useState } from "react";
 import styles from "./InputBox.module.css";
 
 const InputBox = ({ type, value, onChange, placeholder, icon, error }) => {
-    const [inputType, setInputType] = useState(type);
+    const [inputType] = useState(type);
 
     return (
-        <div className={`${styles["input-box"]} ${error ? styles["input-warning"] : ""}`}>
+        <div className={`${styles.inputBox} ${error ? styles.inputWarning : ""}`}>
             <input
                 type={inputType}
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
-                required
+                className={error ? styles.warning : ""}
             />
             <i className={`${icon} ${styles.icon}`}></i>
             {error && <p className={styles.error}>{error}</p>}

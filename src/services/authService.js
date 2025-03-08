@@ -24,6 +24,8 @@ export const login = async (email, password) => {
 
         return { user, token, refreshToken };
     } catch (error) {
+
+
         throw error.response?.data || { message: "Error al iniciar sesión" };
     }
 };
