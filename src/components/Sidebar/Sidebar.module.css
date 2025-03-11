@@ -1,0 +1,162 @@
+/* Estilo general del sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 84px;
+    /* Ancho contraído */
+    background-color: hsl(221, 51%, 50%);
+    padding: 20px;
+    transition: all 0.5s ease;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar:hover {
+    width: 260px;
+    /* Ancho expandido */
+}
+
+/* Encabezado del sidebar */
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.sidebarHeader h1 {
+    font-size: 1.5rem;
+    white-space: wrap;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sidebar:hover .sidebarHeader h1 {
+    opacity: 1;
+}
+
+/* Enlaces del sidebar */
+.sidebarLinks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.sidebarLinks li {
+    margin: 10px 0;
+}
+
+.sidebarLinks a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: hsl(0, 0%, 85%);
+    padding: 13px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.sidebarLinks a:hover {
+    background-color: hsla(0, 0%, 100%, 0.17);
+}
+
+/* Íconos siempre visibles */
+.sidebarLinks span.material-symbols-outlined {
+    opacity: 1;
+    /* Siempre visible */
+    font-size: 24px;
+    /* Tamaño adecuado para los íconos */
+    transition: none;
+    /* Sin transición para los íconos */
+}
+
+/* Texto de los enlaces */
+.sidebarLinks span:not(.material-symbols-outlined) {
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.5s ease;
+}
+
+.sidebar:hover .sidebarLinks span:not(.material-symbols-outlined) {
+    opacity: 1;
+}
+
+/* Separadores entre secciones */
+.sidebarLinks h4 {
+    color: #fff;
+    font-weight: 500;
+    margin: 10px 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.sidebarLinks .menuSeparator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(1);
+    transform: translateY(-50%);
+    background-color: rgb(255, 255, 255);
+    transform-origin: right;
+    transition: 0.2s;
+}
+
+.sidebar:hover .sidebarLinks .menuSeparator {
+    transform: scaleX(0);
+    transition-delay: 0s;
+}
+
+/* Cuenta de usuario */
+.userAccount {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin-top: auto;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.userAccount:hover {
+    background-color: hsla(0, 0%, 100%, 0.17);
+}
+
+.userDetail h3 {
+    font-size: 1rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.userDetail span {
+    font-size: 0.8rem;
+    color: hsl(0, 0%, 85%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sidebar:hover .userDetail h3,
+.sidebar:hover .userDetail span {
+    opacity: 1;
+}
+
+/* Imagen de perfil siempre visible */
+.userProfile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 1;
+    /* Siempre visible */
+}

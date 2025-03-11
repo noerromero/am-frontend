@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import Login from "../pages/Login/Login";
-import Home from "../pages/Home";
+import Home from "../pages/Home/Home";
 
 const PrivateRoute = ({ children }) => {
     const { isAuthenticated } = useAuth();

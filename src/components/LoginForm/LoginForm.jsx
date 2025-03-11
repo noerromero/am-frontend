@@ -21,8 +21,8 @@ const LoginForm = ({ onSubmit }) => {
         if (!password.trim()) {
             setPasswordError("La contraseña es obligatoria");
             return;
-        } else if (password.length <= 8) {
-            console.log(password);
+        } else if (password.length < 8) {
+            // console.log(password);
 
             setPasswordError("Ingrese mínimo 8 caracteres");
         }
@@ -51,7 +51,7 @@ const LoginForm = ({ onSubmit }) => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Contraseña"
-                        icon="bx bxs-lock-alt"
+                        icon="bx bx-show"
                         error={passwordError}
                     />
                     <button type="submit" className="btn">

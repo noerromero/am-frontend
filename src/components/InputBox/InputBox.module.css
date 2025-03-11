@@ -25,6 +25,7 @@
     transform: translateY(-50%);
     font-size: 1.25rem;
     color: hsl(0, 0%, 30%);
+    cursor: pointer;
 }
 
 .inputBox input.warning {

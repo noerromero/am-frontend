@@ -1,0 +1,11 @@
+.roleSelect {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.roleSelect:focus {
+    border-color: hsl(221, 51%, 50%);
+}

@@ -1,0 +1,49 @@
+.formContainer {
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: 600;
+    color: hsl(0, 0%, 20%);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+button {
+    padding: 12px;
+    background-color: hsl(221, 51%, 50%);
+    color: white;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: hsl(221, 51%, 40%);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions button:last-child {
+    background-color: hsl(0, 0%, 90%);
+    color: hsl(0, 0%, 20%);
+}
+
+.actions button:last-child:hover {
+    background-color: hsl(0, 0%, 80%);
+}
