@@ -1,8 +1,7 @@
 import React from "react";
-import { useAuth } from "../../hooks/useAuth";
 import styles from "./Sidebar.module.css";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 const Sidebar = () => {
     const { user } = useAuth();
