@@ -6,7 +6,7 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
         name: user?.name || "",
         lastName: user?.lastName || "",
         email: user?.email || "",
-        role: user?.role?.id || "",
+        role: user?.role?.name || "",
         password: "",
         confirmPassword: "",
     });
@@ -18,11 +18,30 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Validación de contraseñas
         if (formData.password !== formData.confirmPassword) {
             alert("Las contraseñas no coinciden");
             return;
         }
-        onSubmit(formData);
+
+        // Filtrar los datos antes de enviarlos
+        const filteredData = {};
+        for (const key in formData) {
+            // Incluir solo los campos con valores no vacíos
+            if (formData[key] !== "" && formData[key] !== null) {
+                filteredData[key] = formData[key];
+            }
+        }
+
+        // Eliminar campos innecesarios para PATCH
+        if (!filteredData.password) {
+            delete filteredData.password;
+            delete filteredData.confirmPassword;
+        }
+
+        // Llamar a la función onSubmit con los datos filtrados
+        onSubmit(filteredData);
     };
 
     return (

@@ -28,8 +28,8 @@
     cursor: pointer;
 }
 
-.inputBox input.warning {
-    outline: 2px solid red;
+.inputWarning .icon {
+    height: 40px;
 }
 
 .error {

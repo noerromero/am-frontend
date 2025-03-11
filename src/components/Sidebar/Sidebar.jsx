@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Sidebar.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
@@ -16,6 +16,11 @@ const Sidebar = () => {
             console.error("Error al cerrar sesión:", error);
         }
     };
+
+    // useEffect(() => {
+    //     handleLogout()
+    // }, [])
+
 
     return (
         <aside className={styles.sidebar}>

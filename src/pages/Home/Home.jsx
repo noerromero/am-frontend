@@ -6,7 +6,7 @@ import AddUserModal from "../../components/Modals/AddUserModal";
 import EditUserModal from "../../components/Modals/EditUserModal";
 import DeleteUserModal from "../../components/Modals/DeleteUserModal";
 import ResetPasswordModal from "../../components/Modals/ResetPasswordModal";
-import { getAllUsers, registerUser, updateUser, deleteUser, resetPassword } from "../../services/UserService";
+import { getAllUsers, registerUser, updateUser, partiallyUpdateUser, deleteUser, resetPassword } from "../../services/UserService";
 import styles from "./Home.module.css";
 
 
@@ -52,7 +52,7 @@ const Home = () => {
 
     const handleEditUser = async (userData) => {
         try {
-            await updateUser(selectedUser.id, userData);
+            await partiallyUpdateUser(selectedUser.id, userData);
             fetchUsers();
             setIsEditModalOpen(false);
         } catch (error) {
