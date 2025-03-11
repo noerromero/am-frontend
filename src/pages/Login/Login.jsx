@@ -3,13 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { toast } from "react-toastify";
-import './login.css'
+import './Login.css'
 
 const Login = () => {
     const navigate = useNavigate();
     const { login } = useAuth();
-
-
 
     const handleLogin = async ({ email, password }) => {
         try {

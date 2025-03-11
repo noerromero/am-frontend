@@ -1,3 +1,4 @@
+/* Estilos base */
 .tableUsers {
     width: 100%;
     border-collapse: collapse;
@@ -36,4 +37,80 @@
 
 .tableUsers button:hover {
     transform: scale(1.2);
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .tableUsers {
+        display: block;
+        overflow-x: auto;
+        /* Añade scroll horizontal si es necesario */
+    }
+
+    .tableUsers thead {
+        display: none;
+        /* Oculta el encabezado en pantallas pequeñas */
+    }
+
+    .tableUsers tbody tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .tableUsers td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: none;
+    }
+
+    .tableUsers td::before {
+        content: attr(data-label);
+        /* Muestra el nombre de la columna */
+        font-weight: bold;
+        margin-right: 10px;
+        min-width: 120px;
+        text-align: left;
+    }
+
+    .tableUsers td:last-child {
+        display: flex;
+        gap: 10px;
+    }
+
+    .tableUsers button {
+        font-size: 18px;
+        /* Aumenta el tamaño de los íconos para facilitar su uso */
+    }
+}
+
+/* Estilos para la paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: hsl(221, 51%, 50%);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: hsl(221, 51%, 40%);
+}
+
+.pagination button.active {
+    background-color: hsl(221, 51%, 40%);
+    font-weight: bold;
 }

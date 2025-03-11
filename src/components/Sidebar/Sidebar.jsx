@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./Sidebar.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
@@ -17,15 +17,10 @@ const Sidebar = () => {
         }
     };
 
-    // useEffect(() => {
-    //     handleLogout()
-    // }, [])
-
-
     return (
         <aside className={styles.sidebar}>
             <div className={styles.sidebarHeader}>
-                <img src="/logo.webp" alt="logo" width="40px" />
+                <img src="/Sidebar/logo.webp" alt="logo" width="40px" />
                 <h1>Assets Management</h1>
             </div>
             <ul className={styles.sidebarLinks}>
@@ -35,19 +30,14 @@ const Sidebar = () => {
                 </h4>
                 <li>
                     <a href="#">
-                        <span className="material-symbols-outlined">home</span>
+                        <img src="/Sidebar/home_white.png" alt="logo" width="40px" />
                         <span>Home</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="#">
-                        <span className="material-symbols-outlined">overview</span>
-                        <span>Revisar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span className="material-symbols-outlined">monitoring</span>
+                        <img src="/Sidebar/estadisticas.png" alt="logo" width="40px" />
                         <span>Estadísticas</span>
                     </a>
                 </li>
@@ -57,11 +47,11 @@ const Sidebar = () => {
                 </h4>
                 <li>
                     <a href="#">
-                        <span className="material-symbols-outlined">folder</span>
+                        <img src="/Sidebar/proyectos.png" alt="logo" width="40px" />
                         <span>Proyectos</span>
                     </a>
                 </li>
-                <li>
+                {/* <li>
                     <a href="#">
                         <span className="material-symbols-outlined">group</span>
                         <span>Grupos</span>
@@ -84,37 +74,37 @@ const Sidebar = () => {
                         <span className="material-symbols-outlined">notifications_active</span>
                         <span>Notificaciones</span>
                     </a>
-                </li>
+                </li> */}
                 <h4>
                     <span>Usuario</span>
                     <div className={styles.menuSeparator}></div>
                 </h4>
-                <li>
+                {/* <li>
                     <a href="#">
                         <span className="material-symbols-outlined">account_circle</span>
                         <span>Perfil</span>
                     </a>
-                </li>
+                </li> */}
                 <li>
                     <a href="#">
-                        <span className="material-symbols-outlined">settings</span>
+                        <img src="/Sidebar/settings_white.png" alt="logo" width="40px" />
                         <span>Configuración</span>
                     </a>
                 </li>
                 <li onClick={handleLogout}>
                     <a href="#">
-                        <span className="material-symbols-outlined">logout</span>
+                        <img src="/Sidebar/cerrarSession.png" alt="logo" width="40px" />
                         <span>Cerrar Sesión</span>
                     </a>
                 </li>
             </ul>
             <div className={styles.userAccount}>
                 <div className={styles.userProfile}>
-                    <img src="/business.jpg" alt="logo" width="40px" />
+                    <img src="/Sidebar/business.jpg" alt="logo" width="40px" />
                 </div>
                 <div className={styles.userDetail}>
                     <h3>{user?.name}</h3>
-                    <span>{user?.role.name}</span>
+                    <span>{user?.role?.name}</span>
                 </div>
             </div>
         </aside>

@@ -107,7 +107,7 @@ const Home = () => {
                     }}
                 />
                 {/* Pagination */}
-                <nav>
+                {/* <nav>
                     <ul className="pagination">
                         <li><a href=""></a></li>
                         <li><a href="" id="nav-id">1</a></li>
@@ -115,7 +115,7 @@ const Home = () => {
                         <li><a href="">3</a></li>
                         <li><a href=""></a></li>
                     </ul>
-                </nav>
+                </nav> */}
             </section>
 
             {/* Modals */}
