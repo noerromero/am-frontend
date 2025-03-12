@@ -1,3 +1,4 @@
+/* Contenedor del Formulario */
 .formContainer {
     display: grid;
     gap: 16px;
@@ -9,41 +10,65 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Etiquetas */
 label {
+    display: block;
     font-weight: 600;
     color: hsl(0, 0%, 20%);
+    margin-bottom: 8px;
 }
 
+/* Inputs y Selects */
 input,
 select {
     width: 100%;
     padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    transition: border-color 0.3s ease;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
 }
 
+input:focus,
+select:focus {
+    border-color: hsl(221, 51%, 50%);
+}
+
+input[type="password"] {
+    letter-spacing: 0.1em;
+}
+
+/* Botones */
 button {
     padding: 12px;
-    background-color: hsl(221, 51%, 50%);
-    color: white;
+    border: none;
     border-radius: 8px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:first-child {
+    background-color: hsl(221, 51%, 50%);
+    color: white;
+}
+
+button:first-child:hover {
     background-color: hsl(221, 51%, 40%);
 }
 
-.actions {
-    display: flex;
-    justify-content: space-between;
-}
-
-.actions button:last-child {
+button:last-child {
     background-color: hsl(0, 0%, 90%);
     color: hsl(0, 0%, 20%);
 }
 
-.actions button:last-child:hover {
+button:last-child:hover {
     background-color: hsl(0, 0%, 80%);
+}
+
+/* Acciones */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 16px;
 }

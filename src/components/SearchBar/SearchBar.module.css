@@ -15,8 +15,9 @@
     background: transparent;
     flex: 1;
     margin: 0;
-    padding: 6px;
+    padding: 2px;
     font-size: 14px;
+    width: 30vw;
 }
 
 .search span {

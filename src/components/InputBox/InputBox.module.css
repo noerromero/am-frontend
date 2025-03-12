@@ -39,3 +39,7 @@
     font-weight: bold;
     text-align: left;
 }
+
+.warning {
+    border: 2px solid red !important;
+}

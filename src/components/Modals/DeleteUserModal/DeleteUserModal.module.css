@@ -1,0 +1,98 @@
+/* Overlay */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Contenido del Modal */
+.modalContent {
+    background-color: white;
+    /* width: 400px; */
+    max-width: 90vw;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: "Ubuntu", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Encabezado */
+.modalHeader {
+    background-color: hsl(221, 51%, 50%);
+    color: white;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalTitle {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.closeButton {
+    background: none !important;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+/* Cuerpo */
+.modalBody {
+    padding: 24px;
+    text-align: center;
+}
+
+.modalBody p {
+    color: hsl(0, 0%, 20%);
+    font-size: 1.2rem;
+}
+
+/* Pie de Página */
+.modalFooter {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+}
+
+.cancelButton {
+    padding: 8px 16px;
+    background-color: #6c757d !important;
+    color: hsl(0, 0%, 20%);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancelButton:hover {
+    background-color: hsl(0, 0%, 70%);
+}
+
+.deleteButton {
+    padding: 8px 16px;
+    background-color: #0a58ca !important;
+    color: white !important;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+    background-color: #0d408d !important;
+}

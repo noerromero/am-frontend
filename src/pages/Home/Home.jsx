@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import UserList from "../../components/UserList/UserList";
-import AddUserModal from "../../components/Modals/AddUserModal";
-import EditUserModal from "../../components/Modals/EditUserModal";
-import DeleteUserModal from "../../components/Modals/DeleteUserModal";
-import ResetPasswordModal from "../../components/Modals/ResetPasswordModal";
+import AddUserModal from "../../components/Modals/AddUserModal/AddUserModal";
+import EditUserModal from "../../components/Modals/EditUserModal/EditUserModal";
+import DeleteUserModal from "../../components/Modals/DeleteUserModal/DeleteUserModal";
+import ResetPasswordModal from "../../components/Modals/ResetPasswordModal/ResetPasswordModal";
 import { getAllUsers, registerUser, updateUser, partiallyUpdateUser, deleteUser, resetPassword } from "../../services/UserService";
 import styles from "./Home.module.css";
 
@@ -83,13 +83,15 @@ const Home = () => {
         <div className={styles.container}>
             <Sidebar />
             <section className={styles.content}>
-                <h2>Gestión de Usuarios</h2>
-                <div className={styles.actions}>
-                    <SearchBar onSearch={handleSearch} />
-                    <button onClick={() => setIsAddModalOpen(true)}>
-                        <span className="material-symbols-outlined"> add_circle </span>
-                        Agregar Usuario
-                    </button>
+                <div className={styles.headerBuscador}>
+                    <h2>Gestión de Usuarios</h2>
+                    <div className={styles.actions}>
+                        <SearchBar onSearch={handleSearch} />
+                        <button onClick={() => setIsAddModalOpen(true)}>
+                            <span className="material-symbols-outlined"> add_circle </span>
+                            Agregar Usuario
+                        </button>
+                    </div>
                 </div>
                 <UserList
                     users={filteredUsers}
