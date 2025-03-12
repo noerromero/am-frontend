@@ -5,7 +5,7 @@ import styles from "./ResetPasswordModal.module.css";
 const generateSecurePassword = () => {
     const length = 8; // Longitud de la contraseña
     const charset =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]:;?><,./-=";
+        "ABCDEFGHIJKLMNOPQRSTabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*()}{[]=";
     let password = "";
     for (let i = 0; i < length; i++) {
         const randomIndex = Math.floor(Math.random() * charset.length);
@@ -25,7 +25,10 @@ const ResetPasswordModal = ({ isOpen, onClose, onReset }) => {
         }
     }, [isOpen]);
 
-    if (!isOpen) return null;
+    // Función para generar una nueva contraseña al hacer clic en el botón
+    const handleGeneratePassword = () => {
+        setNewPassword(generateSecurePassword());
+    };
 
     // Función para copiar la contraseña al portapapeles
     const copyToClipboard = async () => {
@@ -37,6 +40,8 @@ const ResetPasswordModal = ({ isOpen, onClose, onReset }) => {
             console.error("Error al copiar la contraseña:", error);
         }
     };
+
+    if (!isOpen) return null;
 
     return (
         <div className={styles.modalOverlay}>
@@ -69,6 +74,13 @@ const ResetPasswordModal = ({ isOpen, onClose, onReset }) => {
                             </span>
                         </button>
                     </div>
+                    {/* Botón para generar una nueva contraseña */}
+                    <button
+                        className={styles.generateButton}
+                        onClick={handleGeneratePassword}
+                    >
+                        Generar Contraseña
+                    </button>
                 </div>
 
                 {/* Pie de Página */}

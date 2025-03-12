@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify"; // Importa toast
+import "react-toastify/dist/ReactToastify.css"; // Importa los estilos de toast
+import { getRoles } from "../../services/UserService";
 import styles from "./UserForm.module.css";
 
 const UserForm = ({ user, onSubmit, onCancel }) => {
-    const [formData, setFormData] = React.useState({
+    const [formData, setFormData] = useState({
         name: user?.name || "",
         lastName: user?.lastName || "",
         email: user?.email || "",
@@ -10,6 +13,23 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
         password: "",
         confirmPassword: "",
     });
+
+    const [roles, setRoles] = useState([]); // Estado para almacenar los roles obtenidos de la API
+
+    // Cargar los roles al montar el componente
+    useEffect(() => {
+        const fetchRoles = async () => {
+            try {
+                const rolesData = await getRoles();
+                setRoles(rolesData);
+            } catch (error) {
+                console.error("Error al cargar roles:", error.message);
+                toast.error("Error al cargar los roles");
+            }
+        };
+
+        fetchRoles();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,7 +41,14 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
 
         // Validación de contraseñas
         if (formData.password !== formData.confirmPassword) {
-            alert("Las contraseñas no coinciden");
+            toast.error("Las contraseñas no coinciden", {
+                position: "top-right",
+                autoClose: 2000, // Duración del toast (2 segundos)
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
             return;
         }
 
@@ -33,6 +60,10 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
                 filteredData[key] = formData[key];
             }
         }
+
+        // Asegurarse de que `name` y `lastName` tengan un valor predeterminado si están vacíos
+        filteredData.name = formData.name.trim() === "" ? "   " : formData.name.trim();
+        filteredData.lastName = formData.lastName.trim() === "" ? "   " : formData.lastName.trim();
 
         // Eliminar campos innecesarios para PATCH
         if (!filteredData.password) {
@@ -53,7 +84,6 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    required
                 />
             </label>
             <label>
@@ -63,7 +93,6 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    required
                 />
             </label>
             <label>
@@ -85,9 +114,11 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
                     required
                 >
                     <option value="">[Seleccionar]</option>
-                    <option value="admin">Administrador</option>
-                    <option value="user">Usuario</option>
-                    <option value="tecnic">Técnico</option>
+                    {roles.map((role) => (
+                        <option key={role.id} value={role.name}>
+                            {role.name || role.name}
+                        </option>
+                    ))}
                 </select>
             </label>
             <label>
@@ -111,10 +142,10 @@ const UserForm = ({ user, onSubmit, onCancel }) => {
                 />
             </label>
             <div className={styles.actions}>
-                <button type="submit">{user ? "Actualizar" : "Guardar"}</button>
                 <button type="button" onClick={onCancel}>
                     Cancelar
                 </button>
+                <button type="submit">{user ? "Actualizar" : "Guardar"}</button>
             </div>
         </form>
     );
