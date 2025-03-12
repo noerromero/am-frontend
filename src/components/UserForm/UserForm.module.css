@@ -48,21 +48,21 @@ button {
 }
 
 button:first-child {
-    background-color: hsl(221, 51%, 50%);
-    color: white;
+    background-color: var(--btnn-cancel) !important;
+    color: var(--btn-color-letter);
 }
 
 button:first-child:hover {
-    background-color: hsl(221, 51%, 40%);
+    background-color: var(--btn-cancel-hover) !important;
 }
 
 button:last-child {
-    background-color: hsl(0, 0%, 90%);
-    color: hsl(0, 0%, 20%);
+    background-color: var(--btn-guardar);
+    color: var(--btn-color-letter);
 }
 
 button:last-child:hover {
-    background-color: hsl(0, 0%, 80%);
+    background-color: var(--btn-guardar-hover);
 }
 
 /* Acciones */

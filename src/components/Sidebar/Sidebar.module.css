@@ -153,7 +153,9 @@
     margin-top: auto;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-    background-color: hsla(0, 0%, 100%, 0.17);
+    margin: auto;
+    background-color: hsla(0, 0%, 80%, 0.25);
+    width: 100%;
 }
 
 .userAccount:hover {
@@ -181,8 +183,8 @@
 
 /* Imagen de perfil siempre visible */
 .userProfile img {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     opacity: 1;
     /* Siempre visible */

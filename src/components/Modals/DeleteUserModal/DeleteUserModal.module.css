@@ -80,7 +80,7 @@
 }
 
 .cancelButton:hover {
-    background-color: hsl(0, 0%, 70%);
+    background-color: #54575a !important;
 }
 
 .deleteButton {
