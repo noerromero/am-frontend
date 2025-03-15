@@ -64,7 +64,7 @@ const Sidebar = () => {
                 <div className={styles.userProfile}>
                     {/* Ícono generado dinámicamente */}
                     <div className={styles.userIcon}>
-                        {user?.name?.charAt(0).toUpperCase() || "U"}
+                        {user?.name?.trim()?.charAt(0)?.toUpperCase() || "U"}
                     </div>
                 </div>
                 <div className={styles.userDetail}>

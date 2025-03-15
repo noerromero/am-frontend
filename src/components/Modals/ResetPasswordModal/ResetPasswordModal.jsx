@@ -69,7 +69,7 @@ const ResetPasswordModal = ({ isOpen, onClose, onReset }) => {
                             onClick={copyToClipboard}
                             disabled={!newPassword}
                         >
-                            <span className="material-symbols-outlined">
+                            <span title="Copiar" className="material-symbols-outlined">
                                 content_copy
                             </span>
                         </button>

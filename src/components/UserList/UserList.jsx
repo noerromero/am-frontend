@@ -55,13 +55,13 @@ const UserList = ({ users, onEdit, onDelete, onResetPassword }) => {
                                 <td data-label="Rol">{user.role.name}</td>
                                 <td data-label="Acciones">
                                     <button onClick={() => onResetPassword(user.id)}>
-                                        <span className="material-symbols-outlined">password</span>
+                                        <span title="Generar Contraseña" className="material-symbols-outlined">password</span>
                                     </button>
                                     <button onClick={() => onEdit(user)}>
-                                        <span className="material-symbols-outlined">edit</span>
+                                        <span title="Editar" className="material-symbols-outlined">edit</span>
                                     </button>
                                     <button onClick={() => onDelete(user.id)}>
-                                        <span className="material-symbols-outlined">delete</span>
+                                        <span title="Eliminar" className="material-symbols-outlined">delete</span>
                                     </button>
                                 </td>
                             </tr>
