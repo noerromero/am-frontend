@@ -1,0 +1,45 @@
+.inputBox {
+    position: relative;
+    margin: 30px 0;
+}
+
+.inputBox input {
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0.813rem 2.5rem 0.813rem 0.813rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: hsl(0, 0%, 90%);
+}
+
+.inputBox input::placeholder {
+    color: hsl(0, 0%, 30%);
+    font-family: "Ubuntu", sans-serif;
+}
+
+.inputBox i {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: hsl(0, 0%, 30%);
+    cursor: pointer;
+}
+
+.inputWarning .icon {
+    height: 40px;
+}
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.warning {
+    border: 2px solid red !important;
+}

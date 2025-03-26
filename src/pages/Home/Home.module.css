@@ -1,0 +1,120 @@
+/* Contenedor principal */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 84px;
+    /* Ancho contraído */
+    background-color: hsl(221, 51%, 50%);
+    padding: 20px;
+    transition: all 0.5s ease;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar:hover {
+    width: 260px;
+    /* Ancho expandido */
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 100px;
+    /* Margen igual al ancho contraído del Sidebar */
+    padding: 54px;
+    flex-grow: 1;
+    overflow-y: auto;
+    transition: margin-left 0.5s ease;
+
+}
+
+.headerBuscador {
+    width: 90%;
+    margin: 50px 0px;
+    margin: auto;
+}
+
+.headerBuscador>h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+
+@media (max-width: 768px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+
+
+.sidebar:hover+.content {
+    margin-left: 260px;
+    /* Margen igual al ancho expandido del Sidebar */
+}
+
+/* Acciones (Barra de búsqueda y botón) */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.actions button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: font-size 0.3s ease;
+    font-size: 15px;
+}
+
+.actions button:hover {
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.actions button:active {
+    color: rgb(58, 57, 57);
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.pagination li a {
+    text-decoration: none;
+    color: hsl(221, 51%, 50%);
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination li a:hover {
+    background-color: hsl(221, 51%, 90%);
+}
