@@ -1,0 +1,74 @@
+/* Contenedor del Formulario */
+.formContainer {
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    font-weight: 600;
+    color: hsl(0, 0%, 20%);
+    margin-bottom: 8px;
+}
+
+/* Inputs y Selects */
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus,
+select:focus {
+    border-color: hsl(221, 51%, 50%);
+}
+
+input[type="password"] {
+    letter-spacing: 0.1em;
+}
+
+/* Botones */
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:first-child {
+    background-color: var(--btnn-cancel) !important;
+    color: var(--btn-color-letter);
+}
+
+button:first-child:hover {
+    background-color: var(--btn-cancel-hover) !important;
+}
+
+button:last-child {
+    background-color: var(--btn-guardar);
+    color: var(--btn-color-letter);
+}
+
+button:last-child:hover {
+    background-color: var(--btn-guardar-hover);
+}
+
+/* Acciones */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 16px;
+}
