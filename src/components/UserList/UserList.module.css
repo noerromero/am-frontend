@@ -43,7 +43,12 @@
     color: rgb(32, 32, 32) !important;
 }
 
+
 .tableUsers button:nth-child(1) {
+    background-color: transparent !important;
+}
+
+.tableUsers button:nth-child(1):hover {
     background-color: transparent !important;
 }
 
@@ -144,4 +149,23 @@
 
 .pagination button.active:hover {
     background-color: #54575a;
+}
+
+/* Estilo para botones desactivados */
+.pagination button.disabled {
+    background-color: #6c757d;
+    /* Color gris para botones desactivados */
+    cursor: not-allowed;
+    /* Cambia el cursor para indicar que no se puede hacer clic */
+    opacity: 0.6;
+    /* Reduce la opacidad para indicar que está desactivado */
+}
+
+.pagination button.disabled:hover {
+    background-color: #6c757d;
+    /* Mantener el color gris al pasar el cursor */
+}
+
+.paginationButton {
+    font-weight: 900;
 }

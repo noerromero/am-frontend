@@ -2,11 +2,14 @@ import React from "react";
 import styles from "./Sidebar.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
     const { logout } = useAuth();
+
+
 
     const handleLogout = async () => {
         try {
@@ -23,74 +26,31 @@ const Sidebar = () => {
                 <img src="/Sidebar/logo.webp" alt="logo" width="40px" />
                 <h1>Assets Management</h1>
             </div>
-            <ul className={styles.sidebarLinks}>
-                <h4>
-                    <span>Menu Principal</span>
-                    <div className={styles.menuSeparator}></div>
-                </h4>
-                <li>
-                    <a href="#">
-                        <img src="/Sidebar/home_white.png" alt="logo" width="40px" />
-                        <span>Home</span>
-                    </a>
-                </li>
+            {/* ****Menu */}
 
-                <li>
-                    <a href="#">
-                        <img src="/Sidebar/estadisticas.png" alt="logo" width="40px" />
-                        <span>Estadísticas</span>
-                    </a>
-                </li>
-                <h4>
-                    <span>General</span>
-                    <div className={styles.menuSeparator}></div>
-                </h4>
-                <li>
-                    <a href="#">
-                        <img src="/Sidebar/proyectos.png" alt="logo" width="40px" />
-                        <span>Proyectos</span>
-                    </a>
-                </li>
-                {/* <li>
-                    <a href="#">
-                        <span className="material-symbols-outlined">group</span>
-                        <span>Grupos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span className="material-symbols-outlined">move_up</span>
-                        <span>Transferencias</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span className="material-symbols-outlined">flag</span>
-                        <span>Reportes</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span className="material-symbols-outlined">notifications_active</span>
-                        <span>Notificaciones</span>
-                    </a>
-                </li> */}
-                <h4>
-                    <span>Usuario</span>
-                    <div className={styles.menuSeparator}></div>
-                </h4>
-                {/* <li>
-                    <a href="#">
-                        <span className="material-symbols-outlined">account_circle</span>
-                        <span>Perfil</span>
-                    </a>
-                </li> */}
-                <li>
-                    <a href="#">
-                        <img src="/Sidebar/settings_white.png" alt="logo" width="40px" />
-                        <span>Configuración</span>
-                    </a>
-                </li>
+            <ul className={styles.sidebarLinks}>
+                {
+                    user?.role.permissions.map((menuTitle, indexMenuTitle) => (
+                        <React.Fragment key={indexMenuTitle}>
+                            <h4 key={indexMenuTitle}>
+                                <span>{`${menuTitle.title}`}</span>
+                                <div className={styles.menuSeparator}></div>
+                            </h4>
+                            {
+                                menuTitle.functions.map((menuOption, indexMenuOption) => (
+                                    <React.Fragment key={indexMenuOption}>
+                                        <li>
+                                            <Link to="/"> {/* Usamos Link en lugar de <a> */}
+                                                <img src={`./Sidebar/${menuOption}.png`} alt="logo" width="40px" />
+                                                <span>{menuOption}</span>
+                                            </Link>
+                                        </li>
+                                    </React.Fragment>
+                                ))
+                            }
+                        </React.Fragment>
+                    ))
+                }
                 <li onClick={handleLogout}>
                     <a href="#">
                         <img src="/Sidebar/cerrarSession.png" alt="logo" width="40px" />
@@ -98,13 +58,18 @@ const Sidebar = () => {
                     </a>
                 </li>
             </ul>
+
+
             <div className={styles.userAccount}>
                 <div className={styles.userProfile}>
-                    <img src="/Sidebar/business.jpg" alt="logo" width="40px" />
+                    {/* Ícono generado dinámicamente */}
+                    <div className={styles.userIcon}>
+                        {user?.name?.trim()?.charAt(0)?.toUpperCase() || "U"}
+                    </div>
                 </div>
                 <div className={styles.userDetail}>
-                    <h3>{user?.name}</h3>
-                    <span>{user?.role?.name}</span>
+                    <h3>{user?.name || "Usuario"}</h3>
+                    <span>{user?.role?.name || "Sin rol"}</span>
                 </div>
             </div>
         </aside>

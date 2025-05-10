@@ -2,6 +2,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { ClipLoader } from "react-spinners";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -23,37 +24,33 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    useEffect(() => {
-        const verifyAuth = async () => {
-            const token = Cookies.get("token");
-            const refreshToken = Cookies.get("refreshToken");
+    const verifyAuth = async () => {
+        const token = Cookies.get("token");
+        const refreshToken = Cookies.get("refreshToken");
 
-            if (token) {
-                try {
-                    const decodedToken = decodeToken(token);
-                    if (!decodedToken) throw new Error("Token inválido");
+        if (token) {
+            try {
+                const decodedToken = decodeToken(token);
+                if (!decodedToken) throw new Error("Token inválido");
 
-                    const currentTime = Date.now() / 1000;
-                    if (decodedToken.exp < currentTime) {
-                        await refreshAccessToken(refreshToken);
-                    } else {
-                        const userData = await fetchUserData(decodedToken.id);
-                        setUser(userData);
-                        setIsAuthenticated(true);
-                    }
-                } catch (error) {
-                    console.error("Error al verificar la autenticación:", error);
-                    logout();
+                const currentTime = Date.now() / 1000;
+                if (decodedToken.exp < currentTime) {
+                    await refreshAccessToken(refreshToken);
+                } else {
+                    const userData = await fetchUserData(decodedToken.id);
+                    setUser(userData);
+                    setIsAuthenticated(true);
                 }
-            } else {
+            } catch (error) {
+                console.error("Error al verificar la autenticación:", error);
                 logout();
             }
+        } else {
+            logout();
+        }
 
-            setLoading(false);
-        };
-
-        verifyAuth();
-    }, []);
+        setLoading(false);
+    };
 
     const refreshAccessToken = async (refreshToken) => {
         try {
@@ -102,7 +99,6 @@ export const AuthProvider = ({ children }) => {
 
             const { token, refreshToken, user } = response.data;
 
-
             Cookies.set("token", token, {
                 expires: 1,
                 domain: import.meta.env.VITE_COOKIE_DOMAIN,
@@ -140,8 +136,29 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Ejecutar verifyAuth cada 2 segundos
+    useEffect(() => {
+        verifyAuth();
+        const intervalId = setInterval(() => {
+            verifyAuth();
+        }, 2000);
+
+        // Limpiar el intervalo cuando el componente se desmonta
+        return () => clearInterval(intervalId);
+    }, []); // El array vacío asegura que el efecto solo se ejecute una vez al montar el componente
+
     if (loading) {
-        return <div>Cargando...</div>;
+        return (
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh',
+                backgroundColor: '#f5f5f5',
+            }}>
+                <ClipLoader color="#36d7b7" size={100} />
+            </div>
+        );
     }
 
     return (
